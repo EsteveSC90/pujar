@@ -1,0 +1,23 @@
+SELECT * 
+FROM (
+    SELECT 'Netflix' AS plataforma, SUM(imdbNumVotes) AS total_vots
+    FROM netflix
+    WHERE genres LIKE '%ciència-ficció%' AND data = '2024-12-02'
+    UNION ALL
+    SELECT 'Apple' AS plataforma, SUM(imdbNumVotes) AS total_vots
+    FROM apple
+    WHERE genres LIKE '%ciència-ficció%' AND data = '2024-12-02'
+    UNION ALL
+    SELECT 'Amazon' AS plataforma, SUM(imdbNumVotes) AS total_vots
+    FROM amazon
+    WHERE genres LIKE '%ciència-ficció%' AND data = '2024-12-02'
+    UNION ALL
+    SELECT 'Hulu' AS plataforma, SUM(imdbNumVotes) AS total_vots
+    FROM hulu
+    WHERE genres LIKE '%ciència-ficció%' AND data = '2024-12-02'
+    UNION ALL
+    SELECT 'HBO' AS plataforma, SUM(imdbNumVotes) AS total_vots
+    FROM hbo
+    WHERE genres LIKE '%ciència-ficció%' AND data = '2024-12-02'
+) AS totals
+ORDER BY total_vots DESC;
